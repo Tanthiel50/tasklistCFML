@@ -2,6 +2,10 @@
 <cfset headerHtml = header.displayHeader()>
 <cfoutput>#headerHtml#</cfoutput>
 
+<cfobject component = "components.Navbar" name = "navbar">
+<cfset navbarHtml = navbar.displayNavbar()>
+<cfoutput>#navbarHtml#</cfoutput>
+
 <cfobject component = "components.Security" name = "security">
 <cfset security.checkSession()>
 
@@ -11,7 +15,12 @@
 
 <section class="section">
     <div class="container">
-        <h1 class="title">Task Manager</h1>
+<h1 class = "title">
+<cfoutput>
+    #UCase (session.user_username)#
+</cfoutput>
+    Tasks
+</h1>
         <a class="button is-primary" href="addTask.cfm">Add Task</a>
         <table class="table is-striped is-fullwidth">
             <thead>

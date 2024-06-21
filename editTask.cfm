@@ -2,6 +2,10 @@
 <cfset headerHtml = header.displayHeader()>
 <cfoutput>#headerHtml#</cfoutput>
 
+<cfobject component = "components.Navbar" name = "navbar">
+<cfset navbarHtml = navbar.displayNavbar()>
+<cfoutput>#navbarHtml#</cfoutput>
+
 <cfobject component = "components.Security" name = "security">
 <cfset security.checkSession()>
 

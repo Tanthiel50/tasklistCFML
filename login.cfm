@@ -2,6 +2,10 @@
 <cfset headerHtml = header.displayHeader()>
 <cfoutput>#headerHtml#</cfoutput>
 
+<cfobject component = "components.Navbar" name = "navbar">
+<cfset navbarHtml = navbar.displayNavbar()>
+<cfoutput>#navbarHtml#</cfoutput>
+
 <cfif structKeyExists(form, "submit")>
     <cfquery name="getUser" datasource="tasklistDB">
         SELECT * FROM users WHERE username = <cfqueryparam value="#form.username#" cfsqltype="cf_sql_varchar">
@@ -9,6 +13,7 @@
     
     <cfif getUser.recordCount EQ 1 AND getUser.password EQ hash(form.password, "SHA-256")>
         <cfset session.user_id = getUser.id>
+        <cfset session.user_username = getUser.username>
         <cfset session.loggedIn = true>
         <cflocation url="index.cfm">
     <cfelse>
