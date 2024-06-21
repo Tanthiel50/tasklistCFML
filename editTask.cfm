@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+</head>
+<body>
 <cfobject component="Security" name="security">
 <cfset security.checkSession()>
 
@@ -18,18 +26,42 @@
         <cflocation url="index.cfm">
     </cfif>
 
+<section class="section">
+        <div class="container">
+            <h1 class="title">Modify Task</h1>
     <form method="post">
-        <label>Title:</label>
-        <input type="text" name="title" value="#getTask.title#" required>
-        <label>Description:</label>
-        <textarea name="description">#getTask.description#</textarea>
-        <label>Status:</label>
-        <select name="status">
-            <option value="pending" <cfif getTask.status eq 'pending'>selected</cfif>>Pending</option>
-            <option value="completed" <cfif getTask.status eq 'completed'>selected</cfif>>Completed</option>
+
+    <div class="field">
+        <label class="label">Title:</label>
+        <div class="control">
+            <input class = "input" type = "text" name = "title" value = "<cfoutput> #getTask.title#</cfoutput>"required>
+        </div>
+    </div>
+    <div class="field">
+    <label class = "label">
+    Description:
+    </label>
+    <textarea class = "textarea" name = "description">
+    <cfoutput >
+            #getTask.description#
+        </cfoutput> 
+    </textarea>
+    </div>
+    <div class="field"> 
+    <label class = "label">
+    Status:
+    </label>
+        <select class = "select" name="status">
+            <option class = "option" value="pending" <cfif getTask.status eq 'pending'>selected</cfif>>Pending</option>
+            <option class= "option" value="completed" <cfif getTask.status eq 'completed'>selected</cfif>>Completed</option>
         </select>
-        <input type="submit" name="submit" value="Update Task">
+    </div>
+        <input class="button is-primary" type="submit" name="submit" value="Update Task">
     </form>
 <cfelse>
-    <p>Task not found or you don't have permission to edit this task.</p>
+    <p class="has-text-centered" >Task not found or you don't have permission to edit this task.</p>
 </cfif>
+</div>
+    </section>
+</body>
+</html>
