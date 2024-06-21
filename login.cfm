@@ -1,3 +1,7 @@
+<cfobject component = "components.Header" name = "header">
+<cfset headerHtml = header.displayHeader()>
+<cfoutput>#headerHtml#</cfoutput>
+
 <cfif structKeyExists(form, "submit")>
     <cfquery name="getUser" datasource="tasklistDB">
         SELECT * FROM users WHERE username = <cfqueryparam value="#form.username#" cfsqltype="cf_sql_varchar">

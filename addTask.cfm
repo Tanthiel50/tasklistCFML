@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Add Task</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-</head>
-<body>
-    <cfobject component="Security" name="security">
+<cfobject component = "components.Header" name = "header">
+<cfset headerHtml = header.displayHeader()>
+<cfoutput>#headerHtml#</cfoutput>
+
+<cfobject component = "components.Security" name = "security">
     <cfset security.checkSession()>
 
     <cfif structKeyExists(form, "submit")>

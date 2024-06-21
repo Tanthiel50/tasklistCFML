@@ -1,4 +1,5 @@
-<cfobject component="Security" name="security">
+
+<cfobject component = "components.Security" name = "security">
 <cfset security.checkSession()>
 
 <cfquery datasource="tasklistDB">

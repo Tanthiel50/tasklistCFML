@@ -2,7 +2,7 @@
 <cfset headerHtml = header.displayHeader()>
 <cfoutput>#headerHtml#</cfoutput>
 
-<cfobject component="Security" name="security">
+<cfobject component = "components.Security" name = "security">
 <cfset security.checkSession()>
 
 <cfquery name="getTasks" datasource="tasklistDB">

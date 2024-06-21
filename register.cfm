@@ -1,3 +1,7 @@
+<cfobject component = "components.Header" name = "header">
+<cfset headerHtml = header.displayHeader()>
+<cfoutput>#headerHtml#</cfoutput>
+
 <cfif structKeyExists(form, "submit")>
     <!--- Hash the password before storing it in the database --->
     <cfset hashedPassword = hash(form.password, "SHA-256")>
