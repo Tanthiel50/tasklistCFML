@@ -1,8 +1,9 @@
+/* API Call */
 <cfhttp url = "https://random-d.uk/api/v2/random" method = "GET" result = "duckResponse"/>
-
 <cfset duckData = deserializeJSON(duckResponse.fileContent)>
 <cfset duckImageUrl = duckData.url>
 
+/* Header and Navbar */
 <cfobject component = "components.Header" name = "header">
 <cfset headerHtml = header.displayHeader()>
 <cfoutput>#headerHtml#</cfoutput>
@@ -11,9 +12,11 @@
 <cfset navbarHtml = navbar.displayNavbar()>
 <cfoutput>#navbarHtml#</cfoutput>
 
+/* Security */
 <cfobject component = "components.Security" name = "security">
 <cfset security.checkSession()>
 
+/* Tasks query */
 <cfquery name = "getTasks" datasource = "tasklistDB">
     SELECT * FROM tasks WHERE user_id = <cfqueryparam value = "#session.user_id#" 
               cfsqltype = "cf_sql_integer">
